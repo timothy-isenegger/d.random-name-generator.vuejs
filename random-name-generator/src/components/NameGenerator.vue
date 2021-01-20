@@ -1,15 +1,15 @@
 <template>
     <div class="name-generator">
         <h2>Select the desired gender</h2>
-        <select id="selectGender">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
+        <select id="selectGender" @change="updateGender">
+            <option value="0">Male</option>
+            <option value="1">Female</option>
         </select>
 
         <h2>Select the desired race</h2>
-        <select id="selectRace">
-            <option value="human">Human</option>
-            <option value="elf">Elf</option>
+        <select id="selectRace" @change="updateRace">
+            <option value="0">Human</option>
+            <option value="1">Elf</option>
         </select>
 
         <div>
@@ -27,28 +27,65 @@ export default {
         return {
             firstname: '',
             lastname: '',
+            randomNumber: 1,
+            gender: 0,
+            race: 0,
             firstnames: [
-                'Tim',
-                'Lukas',
+                {
+                    male: [
+                        {
+                            human: [
+                                'Tim',
+                                'Lukas'
+                            ]
+                        }
+                    ]
+                },
+                {
+                    female: [
+                        {
+                            human: [
+                                'Corinne',
+                                'Yvonne'
+                            ]
+                        }
+                    ]
+                }
             ],
             lastnames: [
-                'Isenegger',
-                'Fischer',
+                {
+                    male: [
+                        {
+                            human: [
+                                'Isenegger',
+                                'Fischer'
+                            ]
+                        }
+                    ]
+                },
+                {
+                    female: [
+                        {
+                            human: [
+                                'Kardashian',
+                                'Tripulin'
+                            ]
+                        }
+                    ]
+                }
             ]
-        }
-    },
-    computed: {
-        currentGender() {
-            return document.getElementById('selectGender').value;
-        },
-        currentRace() {
-            return document.getElementById('selectRace').value;
         }
     },
     methods: {
         generateName() {
-            this.firstname = this.firstnames[0];
-            this.lastname = this.lastnames[1];
+            this.firstname = this.firstnames[this.currentGender][this.currentRace][this.randomNumber];
+            this.lastname = this.lastnames[this.currentGender][this.currentRace][this.randomNumber];
+        },
+        updateGender() {
+            this.gender = document.getElementById('selectGender').value;
+        },
+        updateRace() {
+            this.race = document.getElementById('selectRace').value;
         }
     }
 }
