@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Random Name Generator</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <div id="app">
+    <name-generator></name-generator>
+  </div>
+
+  <script type="text/x-template" id="nameGeneratorTemplate">
+    <div class="name-generator">
+      <h1>Random Name Generator</h1>
+      <p>
+        Please select a <strong>gender</strong> and a <strong>race</strong>.<br/><br/>
+        Then click on generate to see your characters new name!
+      </p>
+      <h4>Gender</h4>
+      <input type="radio" id="genderMale" value="male" v-model="gender">
+      <label for="genderMale">male</label>
+      <input type="radio" id="genderFemale" value="female" v-model="gender">
+      <label for="genderFemale">female</label>
+
+      <h4>Race</h4>
+      <label for="selectRace" style="display: none;">Select race</label>
+      <select id="selectRace" v-model="race">
+        <option disabled value="">Please select race...</option>
+        <option v-for="race in races" :value="race.value">{{ race.name }}</option>
+      </select>
+
+      <div style="margin-top: 1rem;">
+        <button @click="getName()">Generate!</button>
+      </div>
+
+      <div v-if="name.firstname !== ''">
+        <h2>Generated name</h2>
+        Your generated name is <strong>{{ name.firstname }}&nbsp;{{ name.lastname }}</strong>.
+      </div>
+    </div>
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
