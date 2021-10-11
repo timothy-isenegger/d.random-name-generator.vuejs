@@ -2442,6 +2442,7 @@ let nameGeneratorComponent = {
     getName() {
       if (this.gender === '' || this.race === '') {
         window.alert('Please select a gender and a race!');
+        return false;
       }
 
       this.name.firstname = this.getFirstNameByGenderAndRace();
@@ -2469,6 +2470,11 @@ let nameGeneratorComponent = {
       return Math.floor(Math.random() * maxValue);
     },
   },
+  computed: {
+    nameGenerated: function() {
+      return this.name.firstname !== '';
+    }
+  }
 }
 
 new Vue({
