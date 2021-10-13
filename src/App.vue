@@ -30,13 +30,29 @@ export default {
   box-sizing: border-box;
 }
 
+body {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin: 60px 0;
+  padding: 60px 0;
+
+}
+
+@media (min-width: 768px) {
+  #app {
+      box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    padding: 60px 20px;
+  }
 }
 
 .container {

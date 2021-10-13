@@ -25,8 +25,8 @@
     </div>
 
     <div v-if="name.firstname !== ''">
-      <h2>Generated name</h2>
-      Your generated name is <strong>{{ name.firstname }}&nbsp;{{ name.lastname }}</strong>.
+      Your generated name is <br/>
+      <h2>{{ name.firstname }}&nbsp;{{ name.lastname }}</h2>.
     </div>
   </div>
 </template>
